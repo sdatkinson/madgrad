@@ -7,7 +7,7 @@ from jax.experimental.optimizers import Optimizer, make_schedule, optimizer
 
 
 @optimizer
-def madgrad(step_size=0.01, momentum=0.1, epsilon=1.0e-8):
+def madgrad(step_size=0.01, momentum=0.9, epsilon=1.0e-6):
     """
     Implementation of MADGRAD (Defazio and Jelassi, arXiv:2101.11075)
     """

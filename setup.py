@@ -4,19 +4,15 @@
 
 from setuptools import setup, find_packages
 
-requirements = [
-    "jax",
-    "jaxlib",
-    # "git+ssh://git@github.com/sdatkinson/snets.git@v0.1.0"
-]
+requirements = ["jax", "jaxlib"]
 
 setup(
-    name="mypackage",
+    name="madgrad",
     version="0.0.0",
-    description="My package",
+    description="JAX implementation of MADGRAD",
     author="Steven Atkinson",
     author_email="steven@atkinson.mn",
-    url="https://github.com/sdatkinson/",
+    url="https://github.com/sdatkinson/madgrad",
     install_requires=requirements,
     packages=find_packages(),
 )

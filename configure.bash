@@ -7,11 +7,11 @@
 # $ python --version
 # $ nvcc --version
 
-CUDA_VERSION=110
+CUDA_VERSION=112
 # jaxlib for CUDA
 JAXLIB_MAJOR=0
 JAXLIB_MINOR=1
-JAXLIB_PATCH=59
+JAXLIB_PATCH=64
 
 if [ $# -eq 1 ]; then
     USE_CUDA=${1}
@@ -26,7 +26,11 @@ else
 fi
 
 if [ ! -d ${VDIR} ]; then
-    virtualenv ${VDIR} -p python3
+    python -m venv ${VDIR}
+    if [ $? -ne 0 ]; then
+        echo "Error making venv; abort"
+        return 1
+    fi
 fi
 
 . ${VDIR}/bin/activate

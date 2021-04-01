@@ -17,22 +17,20 @@ def madgrad(step_size=0.01, momentum=0.9, epsilon=1.0e-6):
     def init(x):
         s = jnp.zeros_like(x)
         nu = jnp.zeros_like(x)
-        z = jnp.zeros_like(x)
         x0 = x
-        return x, s, nu, z, x0
+        return x, s, nu, x0
 
     def update(i, g, state):
-        x, s, nu, z, x0 = state
+        x, s, nu, x0 = state
         lbda = step_size(i) * jnp.sqrt(i + 1)
         s = s + lbda * g
         nu = nu + lbda * g * g
         z = x0 - s / (jnp.power(nu, 1.0 / 3.0) + epsilon)
         x = (1 - momentum(i)) * x + momentum(i) * z
-
-        return x, s, nu, z, x0
+        return x, s, nu, x0
 
     def get_params(state):
-        x, s, nu, z, x0 = state
+        x, s, nu, x0 = state
         return x
 
     return Optimizer(init, update, get_params)

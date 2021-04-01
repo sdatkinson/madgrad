@@ -58,6 +58,3 @@ pip install -r ${TMPDIR}/requirements.txt ${PIPF}
 pip install -e .
 pip install pre-commit
 pre-commit install
-
-# Test the installation:
-# pytest tests

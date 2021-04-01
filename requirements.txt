@@ -19,5 +19,3 @@ pytest
 scipy
 tqdm
 wheel
-
-# git+ssh://git@github.com/sdatkinson/snets.git@v0.1.0

@@ -6,6 +6,7 @@
 Simple demonstration on a linear regression problem
 """
 
+from argparse import ArgumentParser
 from functools import partial
 
 import jax.numpy as jnp
@@ -27,7 +28,7 @@ def loss(params, data):
     return jnp.mean(jnp.square(preds - y))
 
 
-def main():
+def main(args):
     x = jnp.linspace(0.0, 1.0, 5)
     a_true, b_true = 1.2, 3.2
     y = model((a_true, b_true), x)
@@ -58,9 +59,13 @@ def main():
     plt.plot(plt.xlim(), plt.xlim(), "--")
     plt.xlabel("Targets")
     plt.ylabel("Predictions")
-
-    plt.show()
+    if args.no_show:
+        plt.close("all")
+    else:
+        plt.show()
 
 
 if __name__ == "__main__":
-    main()
+    parser = ArgumentParser()
+    parser.add_argument("--no-show", action="store_true", help="Don't show plots")
+    main(parser.parse_args())

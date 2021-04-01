@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 _examples_dir = os.path.abspath(
     os.path.join(os.path.dirname(__file__), "..", "examples")
 )
-_examples = ["basic.py"]
+_examples = ["basic.py --no-show"]
 
 
 @pytest.mark.parametrize("example", _examples)
